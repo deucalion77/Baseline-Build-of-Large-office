@@ -1,0 +1,11 @@
+# Move existing computer objects into proper HQ OUs
+
+$hqServersOU      = "OU=HQ_Servers,OU=HQ,DC=corp,DC=local"
+$hqWorkstationsOU = "OU=HQ_Workstations,OU=HQ,DC=corp,DC=local"
+
+# Example hostnames from your lab
+Get-ADComputer "J122220-HQDC"        | Move-ADObject -TargetPath "OU=HQ_DomainControllers,OU=HQ,DC=corp,DC=local"
+Get-ADComputer "J122220-HQ-DC02"     | Move-ADObject -TargetPath "OU=HQ_DomainControllers,OU=HQ,DC=corp,DC=local"
+Get-ADComputer "HQ-FILESERVER"       | Move-ADObject -TargetPath $hqServersOU
+Get-ADComputer "HQ-APPSERVER"        | Move-ADObject -TargetPath $hqServersOU
+Get-ADComputer "DESKTOP-5DDU7A2"     | Move-ADObject -TargetPath $hqWorkstationsOU

@@ -1,0 +1,8 @@
+Import-Module ActiveDirectory
+
+New-ADOrganizationalUnit -Name "BRANCH" -Path "DC=branch,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+
+New-ADOrganizationalUnit -Name "BR_Servers"         -Path "OU=BRANCH,DC=branch,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "BR_Workstations"    -Path "OU=BRANCH,DC=branch,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "BR_Users"           -Path "OU=BRANCH,DC=branch,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "BR_ServiceAccounts" -Path "OU=BRANCH,DC=branch,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true

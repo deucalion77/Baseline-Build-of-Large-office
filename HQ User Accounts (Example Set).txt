@@ -1,0 +1,29 @@
+$hqUsersOU = "OU=HQ_Users,OU=HQ,DC=corp,DC=local"
+
+$defaultPwd = (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force)
+
+$newUsers = @(
+    @{ SamAccountName="john.smith";        GivenName="John";      Surname="Smith";        UserPrincipalName="john.smith@corp.local" }
+    @{ SamAccountName="sarah.lee";         GivenName="Sarah";     Surname="Lee";          UserPrincipalName="sarah.lee@corp.local" }
+    @{ SamAccountName="michael.adams";     GivenName="Michael";   Surname="Adams";        UserPrincipalName="michael.adams@corp.local" }
+    @{ SamAccountName="emma.brown";        GivenName="Emma";      Surname="Brown";        UserPrincipalName="emma.brown@corp.local" }
+    @{ SamAccountName="olivia.davis";      GivenName="Olivia";    Surname="Davis";        UserPrincipalName="olivia.davis@corp.local" }
+    @{ SamAccountName="liam.tech";         GivenName="Liam";      Surname="Tech";         UserPrincipalName="liam.tech@corp.local" }
+    @{ SamAccountName="isabella.martinez"; GivenName="Isabella";  Surname="Martinez";     UserPrincipalName="isabella.martinez@corp.local" }
+    @{ SamAccountName="james.wilson";      GivenName="James";     Surname="Wilson";       UserPrincipalName="james.wilson@corp.local" }
+    @{ SamAccountName="noah.intern";       GivenName="Noah";      Surname="Intern";       UserPrincipalName="noah.intern@corp.local" }
+    @{ SamAccountName="ava.intern";        GivenName="Ava";       Surname="Intern";       UserPrincipalName="ava.intern@corp.local" }
+)
+
+foreach ($u in $newUsers) {
+    New-ADUser `
+        -SamAccountName    $u.SamAccountName `
+       -UserPrincipalName $u.UserPrincipalName `
+        -Name             $u.SamAccountName `
+        -GivenName        $u.GivenName `
+        -Surname          $u.Surname `
+        -Path             $hqUsersOU `
+        -AccountPassword  $defaultPwd `
+        -Enabled          $true `
+        -ChangePasswordAtLogon $true
+}

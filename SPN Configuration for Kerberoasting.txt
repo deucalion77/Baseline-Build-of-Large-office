@@ -1,0 +1,8 @@
+# svc_file used as file service account on HQ-FILESERVER
+Set-ADUser -Identity "svc_file" -ServicePrincipalNames @{Add="cifs/HQ-FILESERVER.corp.local"}
+
+# svc_app used for application service on HQ-APPSERVER
+Set-ADUser -Identity "svc_app" -ServicePrincipalNames @{Add="http/HQ-APPSERVER.corp.local"}
+
+# svc_backup used for backup agent on HQ-FILESERVER
+Set-ADUser -Identity "svc_backup" -ServicePrincipalNames @{Add="backup/HQ-FILESERVER.corp.local"}

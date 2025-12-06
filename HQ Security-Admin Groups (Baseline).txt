@@ -1,0 +1,8 @@
+# Base path variables
+$hqRootOU  = "OU=HQ,DC=corp,DC=local"
+$hqUsersOU = "OU=HQ_Users,OU=HQ,DC=corp,DC=local"
+
+# Admin / role groups
+New-ADGroup -Name "HQ_FileServer_Admins" -GroupScope Global -GroupCategory Security -Path $hqRootOU
+New-ADGroup -Name "HQ_AppServer_Admins"  -GroupScope Global -GroupCategory Security -Path $hqRootOU
+New-ADGroup -Name "HQ_Backup_Operators"  -GroupScope Global -GroupCategory Security -Path $hqRootOU

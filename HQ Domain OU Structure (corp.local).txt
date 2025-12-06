@@ -1,0 +1,9 @@
+# Root OU for HQ
+New-ADOrganizationalUnit -Name "HQ" -Path "DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+
+# Child OUs under HQ
+New-ADOrganizationalUnit -Name "HQ_DomainControllers" -Path "OU=HQ,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "HQ_Servers"           -Path "OU=HQ,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "HQ_Workstations"      -Path "OU=HQ,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "HQ_Users"             -Path "OU=HQ,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true
+New-ADOrganizationalUnit -Name "HQ_ServiceAccounts"   -Path "OU=HQ,DC=corp,DC=local" -ProtectedFromAccidentalDeletion $true

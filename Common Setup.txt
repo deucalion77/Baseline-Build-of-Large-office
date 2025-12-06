@@ -1,0 +1,5 @@
+Import-Module ActiveDirectory
+
+# Quick sanity checks (optional but good to show in thesis)
+Get-ADDomain
+Get-ADForest

@@ -1,0 +1,16 @@
+# Domain & forest info (you pasted this early in the process)
+Get-ADDomain
+Get-ADForest
+
+# View OU tree under HQ
+Get-ADOrganizationalUnit -SearchBase "OU=HQ,DC=corp,DC=local" -SearchScope Subtree -Filter * |
+    Select-Object Name, DistinguishedName
+
+# List service accounts in their OU
+Get-ADUser -SearchBase "OU=HQ_ServiceAccounts,OU=HQ,DC=corp,DC=local" -Filter * |
+    Select-Object Name, SamAccountName, Enabled
+
+# Confirm SPNs
+Get-ADUser -Identity "svc_file"   -Properties ServicePrincipalName | Select Name,ServicePrincipalName
+Get-ADUser -Identity "svc_app"    -Properties ServicePrincipalName | Select Name,ServicePrincipalName
+Get-ADUser -Identity "svc_backup" -Properties ServicePrincipalName | Select Name,ServicePrincipalName
